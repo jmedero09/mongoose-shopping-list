@@ -8,3 +8,10 @@ addons:
     - mongodb-3.2-precise
     packages:
     - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: DrEc8m5ePWhhL1FiYLqvZpiwAm/+8oNwV80YONuveO72R0bQaswniXpraTI5cR5LGvQGh8AhAjW8AEbubZClcjpLlqdCEn/rOgbCo2lK3oz/GIZrwlfKJ2zl9VbyKuXBO43DHg2GgbmMpBYlBzWe274MFSGCWIMRHN2riXlx2Itj8ej9suXT/S+6NtomELdy4Shru31QOC+I6LbFupu3ZGo3+hn97/ZNjE1SHhY82QGiDel/hH8OLrcxJrtTfRNc3FinUwku5ZjHcrpDLq9EPEQxcNhTrAK/tge6gH1Ba25NqoT/8FYv9pl2jHZNwbPwOmeQGPh9/DjE+biJbQJF4z7Cae/HOyeKLWIHzczi4tU9e82lT7FdWoYNkcATVX3a9+u4D/VggrMJaI6ge/hFYMfUI60gWYI3oGH5dE0oDcMdEGbJs+TI5cPkwyI3GCMUV9FZufIvDZk8bOeXKq84/1AOSDgeeKhdb4U0/6mALQXHecuIDT2brnGpImkitIzCvJAVjs0ah3X1LXfjC5AGpgReWiD/2nRAq7pCndQkzrHZvH9v22GBFZ3ZA2fxuNKiD0FnTTWYRkiYp+rBdZuXlL8w0wiAjqzvLOozU4QNpZ+dxYA4BYevsGe3v6CbpHNGZNgNJCNggyltDcz1ZcQxUYqZvDd0vqJ3cxMfgFis4TI=
+  app: protected-falls-23223
+  on:
+    repo: jmedero09/mongoose-shopping-list
