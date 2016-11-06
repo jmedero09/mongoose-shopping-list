@@ -74,14 +74,13 @@ app.post('/items',function(req,res){
 	});
 });
 app.delete('/items/:name',function(req,res){
-
 	var name = req.params.name
 	console.log(name);
 	Item.findOneAndRemove({
 
 		name:name
 
-	},function(err,name){
+	},function(err,results){
 
 		if(err){
 
@@ -91,8 +90,7 @@ app.delete('/items/:name',function(req,res){
 
 			});
 		}
-
-		res.status(201).json(name);
+		res.status(201).json({message:req.params.name+" removed"});
 	});
 });
 
@@ -168,6 +166,7 @@ if(require.main === module){
 exports.app = app;
 
 exports.runServer = runServer;
+
 
 
 //Questions...........................

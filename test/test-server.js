@@ -22,8 +22,8 @@ describe('Shopping List', function() {
         });
     });
 
+//res refrences what im asking my endpoint to return to me so im testing the endpo
    
-
 describe('Shopping List', function() {
 it('should list items on GET', function(done) {
     chai.request(app)
@@ -41,11 +41,12 @@ it('should list items on GET', function(done) {
             res.body[0].name.should.be.a('string');
             res.body[0].name.should.equal('Broad beans');
             res.body[1].name.should.equal('Tomatoes');
-            res.body[2].name.should.equal('Peppers');
+            res.body[2].name.should.equal('jesus');
             done();
         });
     });
 });
+
 it('should add an item on POST',function(done){
 	chai.request(app)
 		.post('/items')
@@ -62,39 +63,33 @@ it('should add an item on POST',function(done){
 			res.body.name.should.equal('kale');
 			done();
 		});
-
 });
+
 it('should edit an item on PUT',function(done){
 	chai.request(app)
-		.get('/items')
-		.end(function(err,res){
+    	.put('/items/Peppers')
+    	.send({'name':'jesus'})
+    	.end(function(err,res){
+        	should.equal(err, null);
+        	res.should.have.status(201);
+        	res.should.be.json;
+    		res.body.should.be.a('string');
+    		res.body.should.equal('jesus');
+    		done();	
+    	});
+});
+	it('should delete an item on DELETE',function(done){
 			chai.request(app)
-				.put('/items/'+res.body.id)
-				.send({'name':'jesus','id':7})
+				.delete('/items/Peppers')
 				.end(function(err,res){
 	            	should.equal(err, null);
 	            	res.should.have.status(201);
 	            	res.should.be.json;
-					res.body.should.be.a('string');
-					res.body.should.equal('jesus');
+                    res.body.message.should.equal('Peppers removed');
            			done();	
 			});
+	
 		});
-});
-	it('should delete an item on DELETE',function(done){
-		chai.request(app)
-			.get('/items')
-			.end(function(err,res){
-				chai.request(app)
-					.delete('/items/'+res.body.name)
-					.end(function(err,res){
-		            	should.equal(err, null);
-		            	res.should.have.status(201);
-		            	res.should.be.json;
-	           			done();	
-				});
-			});
-	});
 
     after(function(done) {
         Item.remove(function() {
